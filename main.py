@@ -7,6 +7,7 @@ print(encoded)
 
 #バイト列を整数にしてリスト"hex_representation"に代入
 hex_representation = [f'{byte:02X}' for byte in encoded]
+#リスト"hex_representation"の前後三つを削除して代入
 del hex_representation[:3]
 del hex_representation[-3:]
 
