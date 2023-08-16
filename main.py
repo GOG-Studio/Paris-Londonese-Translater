@@ -14,9 +14,12 @@ del hex_representation[-3:]
 first_hex = hex_representation[1::2]
 second_hex = hex_representation[::2]
 
+#それぞれのリストの文字列の前に"0x"を付け足す（16進数と宣言）
+first_hex = ["0x" + s for s in first_hex]
+second_hex = ["0x" + s for s in second_hex]
 #それぞれのリストの文字列を数列に変換する
-first_hex = [int(x) for x in first_hex]
-second_hex = [int(x) for x in second_hex]
+first_hex = [int(x,16) for x in first_hex]
+second_hex = [int(x,16) for x in second_hex]
 #条件ごとにリスト内の数列から減算する
 first_hex_a = [x - 32 if 21 <= x <= 28 else x - 39 if 30 <= x <= 74 else x for x in first_hex]
 second_hex_a = [x - 32 for x in second_hex]
