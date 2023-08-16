@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+# coding: utf-8
 
 def translate_letter(text):
     #エンコードして"encoded"に代入する(バイト列)
