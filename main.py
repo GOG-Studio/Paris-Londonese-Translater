@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # coding: utf-8
 
+from time import sleep
 def translate_letter(text):
     #エンコードして"encoded"に代入する(バイト列)
     encoded = text.encode("ISO-2022-JP")
@@ -38,3 +39,5 @@ for c in word:
     translated += t
 
 print(translated)
+while True:
+    sleep(60)
