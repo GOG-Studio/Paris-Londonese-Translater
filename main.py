@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # coding: utf-8
-
+from sys import argv
 from time import sleep
 def translate_letter(text):
     #エンコードして"encoded"に代入する(バイト列)
@@ -33,7 +33,10 @@ def translate_letter(text):
     return word
 
 translated = ""
-word = input("翻訳する文字（全角）を入力：")
+try:
+    word = argv[1]
+except:
+    word = input("翻訳する文字（全角）を入力：")
 for c in word:
     t = translate_letter(c)
     translated += t
