@@ -43,4 +43,4 @@ for c in word:
 
 print(translated)
 
-sleep(60)
+input("Enter to Exit.")
