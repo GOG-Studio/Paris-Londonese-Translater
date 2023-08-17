@@ -30,6 +30,7 @@ def translate_letter(text):
 
     tr = str.maketrans({"1":"ぱ","2":"り","3":"ろ","4":"ん","5":"ど","6":"パ","7":"リ","8":"ロ","9":"ン","0":"ド",})
     word = str(str(second_hex_a[0])+"ー"+str(first_hex_a[0])).translate(tr)
+    word = word + " "
     return word
 
 translated = ""
