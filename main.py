@@ -24,13 +24,17 @@ def translate_letter(text):
     second_hex_a = [x - 32 for x in second_hex]
 
     #減算後の値を出力する（3,4行目）
-    #print(second_hex_a)
-    #print(first_hex_a)
+    print(second_hex_a)
+    print(first_hex_a)
 
     tr = str.maketrans({"1":"ぱ","2":"り","3":"ろ","4":"ん","5":"ど","6":"パ","7":"リ","8":"ロ","9":"ン","0":"ド",})
     word = str(str(second_hex_a[0])+"ー"+str(first_hex_a[0])).translate(tr)
     return word
 
+translated = ""
 word = input("翻訳する文字（全角）を入力：")
-translated = translate_letter(word)
+for c in word:
+    t = translate_letter(c)
+    translated += t
+
 print(translated)
