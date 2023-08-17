@@ -31,8 +31,8 @@ def translate_letter(text :str, debug :bool):
     first_hex_a = [x - 32 for x in first_hex]
     second_hex_a = [x - 32 for x in second_hex]
     #数値の出力
-    print(second_hex_a)
-    print(first_hex_a)
+    print("first_byte: "+str(second_hex_a))
+    print("second_byte: "+str(first_hex_a))
     #数値を変換
     tr = str.maketrans({"1":"ぱ","2":"り","3":"ろ","4":"ん","5":"ど","6":"パ","7":"リ","8":"ロ","9":"ン","0":"ド",})
     word = str(str(second_hex_a[0])+"ー"+str(first_hex_a[0])).translate(tr)
