@@ -39,5 +39,5 @@ for c in word:
     translated += t
 
 print(translated)
-while True:
-    sleep(60)
+
+sleep(60)
