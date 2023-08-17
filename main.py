@@ -2,11 +2,12 @@
 # coding: utf-8
 from sys import argv
 from time import sleep
-def translate_letter(text):
+def translate_letter(text :str, debug :bool):
     #エンコードして"encoded"に代入する(バイト列)
     encoded = text.encode("ISO-2022-JP")
-    #"encodedを出力する"
-    #print(encoded)
+    ##"encoded"を出力する
+    if debug == True:
+        print("encoded: "+str(encoded))
 
     #バイト列を整数にしてリスト"hex_representation"に代入
     hex_representation = [f'{byte:02X}' for byte in encoded]
@@ -20,17 +21,23 @@ def translate_letter(text):
     #それぞれのリストの文字列を数列に変換する
     first_hex = [int(x,16) for x in first_hex]
     second_hex = [int(x,16) for x in second_hex]
-    #条件ごとにリスト内の数列から減算する
-    first_hex_a = [x - 32 if 0x21 <= x <= 0x28 else x - 39 if 0x30 <= x <= 0x90 else x for x in first_hex]
-    second_hex_a = [x - 32 for x in second_hex]
 
-    #減算後の値を出力する（3,4行目）
+    ##減算後の値を出力する（3,4行目）
+    if debug == True:
+        print("first: "+str(second_hex))
+        print("second: "+str(first_hex))
+    
+    #条件ごとにリスト内の数列から減算する
+    first_hex_a = [x - 32 for x in first_hex]
+    second_hex_a = [x - 32 for x in second_hex]
+    #数値の出力
     print(second_hex_a)
     print(first_hex_a)
-
+    #数値を変換
     tr = str.maketrans({"1":"ぱ","2":"り","3":"ろ","4":"ん","5":"ど","6":"パ","7":"リ","8":"ロ","9":"ン","0":"ド",})
     word = str(str(second_hex_a[0])+"ー"+str(first_hex_a[0])).translate(tr)
     word = word + " "
+    #返す
     return word
 
 translated = ""
@@ -39,7 +46,7 @@ try:
 except:
     word = input("翻訳する文字（全角）を入力：")
 for c in word:
-    t = translate_letter(c)
+    t = translate_letter(c, False)
     translated += t
 
 print(translated)
