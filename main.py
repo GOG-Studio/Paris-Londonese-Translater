@@ -55,13 +55,23 @@ def translate_pl(text:str, debug:bool):
     letter_a = [int(x)+32 for x in letter_a]
     byte_1 = bytes(letter_a)
     if debug == True:
+        print(letter_a)
+    decoded = byte_1.decode("iso-2022-jp")
+    print(decoded)
+    return decoded
+    
+#入力
 try:
-    word = argv[1]
+    word = argv[2]
 except:
     word = input("翻訳する文字（全角）を入力：")
-for c in word:
-    t = translate_letter(c, False)
-    translated += t
+
+#モード選択
+try:
+    type = argv[1]
+except:
+    type = input("日本語から:a/日本語に(開発中につき動作しません):b ：")
+
 translated = ""
 if type == "a":
     for c in word:
