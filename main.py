@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 # coding: utf-8
+print("""
+Paris-Londonese-Translater v0.2.2-Alpha
+パリロンドン語翻訳ソフト v0.2.2-Alpha
+まだアルファ版なので、バグ・制約が多いです。自己責任で実行してください""")
+
 from sys import argv
 from time import sleep
 def translate_letter(text :str, debug :bool):
@@ -34,13 +39,22 @@ def translate_letter(text :str, debug :bool):
     print("first_byte: "+str(second_hex_a))
     print("second_byte: "+str(first_hex_a))
     #数値を変換
-    tr = str.maketrans({"1":"ぱ","2":"り","3":"ろ","4":"ん","5":"ど","6":"パ","7":"リ","8":"ロ","9":"ン","0":"ド",})
+    tr = str.maketrans({"1":"ぱ","2":"り","3":"ろ","4":"ん","5":"ど","6":"パ","7":"リ","8":"ロ","9":"ン","0":"ド"})
     word = str(str(second_hex_a[0])+"ー"+str(first_hex_a[0])).translate(tr)
     word = word + " "
     #返す
     return word
 
-translated = ""
+def translate_pl(text:str, debug:bool):
+    tr = str.maketrans({"ぱ":"1","り":"2","ろ":"3","ん":"4","ど":"5","パ":"6","リ":"7","ロ":"8","ン":"9","ド":"10","　":" ","－":"ー"})
+    letter_a = []
+    letter = text.translate(tr)
+    if debug == True:
+        print("letter:"+str(letter))
+    letter_a = letter.split("ー")
+    letter_a = [int(x)+32 for x in letter_a]
+    byte_1 = bytes(letter_a)
+    if debug == True:
 try:
     word = argv[1]
 except:
@@ -48,6 +62,17 @@ except:
 for c in word:
     t = translate_letter(c, False)
     translated += t
+translated = ""
+if type == "a":
+    for c in word:
+        t = translate_letter(c, False)
+        translated += t
+elif type == "b":
+    for kk in word.split():
+        t = translate_pl(kk, False)
+        translated += t
+else:
+    pass
 
 print(translated)
 
